@@ -188,14 +188,17 @@ userRoutes.post("/user/login", async (req, res) => {
                 findUser.tokens = findUser.tokens.concat({ token: token });
 
                 // Creating cookie using the generated token
-                res.json( {token,
-                    // expiresIn: toString() new Date(Date.now + 86400000),
-                    httpOnly: false
-                });
+                // res.json( {token,
+                //     expiresIn: new Date(Date.now + 86400000),
+                //     httpOnly: false
+                // });
 
                 await findUser.save();
                 console.log("User Login Successfull!!!");
-                return res.json({ message: "User Login Successfull!!!" });
+                return res.json({token,
+                    // expiresIn: toString() new Date(Date.now + 86400000),
+                    httpOnly: false,
+                    message: "User Login Successfull!!!" });
             } else {
                 return res.status(401).json({ error: "Invalid Credentials!!! pass" });
             }
@@ -212,7 +215,7 @@ userRoutes.post("/user/login", async (req, res) => {
 userRoutes.get("/getData", async function (req, res) {
 
     try {
-        const token = req.cookies.jwtoken;
+        const token = req.headers.Authorization;
 
         const verifyToken = jsonwebtoken.verify(token, process.env.SECRET_KEY);
 
@@ -264,7 +267,7 @@ userRoutes.post("/complaint", async (req, res) => {
 
     try {
 
-        const token = req.cookies.jwtoken;
+        const token = req.headers.Authorization;
 
         const verifyToken = jsonwebtoken.verify(token, process.env.SECRET_KEY);
 
@@ -309,7 +312,7 @@ userRoutes.post("/addClothes", async (req, res) => {
 
     try {
 
-        const token = req.cookies.jwtoken;
+        const token = req.headers.Authorization;
 
         const verifyToken = jsonwebtoken.verify(token, process.env.SECRET_KEY);
 
@@ -348,7 +351,7 @@ userRoutes.post("/addClothes", async (req, res) => {
 userRoutes.post('/updateProfile', async (req, res) => {
     try {
 
-        const token = req.cookies.jwtoken;
+        const token = req.headers.Authorization;
 
         const verifyToken = jsonwebtoken.verify(token, process.env.SECRET_KEY);
 
