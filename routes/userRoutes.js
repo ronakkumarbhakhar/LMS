@@ -215,7 +215,7 @@ userRoutes.post("/user/login", async (req, res) => {
 userRoutes.get("/getData", async function (req, res) {
 
     try {
-        const token = req.headers.Authorization;
+        const token = req.header('Authorization');
 
         const verifyToken = jsonwebtoken.verify(token, process.env.SECRET_KEY);
 
@@ -267,7 +267,7 @@ userRoutes.post("/complaint", async (req, res) => {
 
     try {
 
-        const token = req.headers.Authorization;
+        const token = req.header('Authorization');
 
         const verifyToken = jsonwebtoken.verify(token, process.env.SECRET_KEY);
 
@@ -312,7 +312,7 @@ userRoutes.post("/addClothes", async (req, res) => {
 
     try {
 
-        const token = req.headers.Authorization;
+        const token = req.header('Authorization');
 
         const verifyToken = jsonwebtoken.verify(token, process.env.SECRET_KEY);
 
@@ -351,7 +351,7 @@ userRoutes.post("/addClothes", async (req, res) => {
 userRoutes.post('/updateProfile', async (req, res) => {
     try {
 
-        const token = req.headers.Authorization;
+        const token = req.header('Authorization');
 
         const verifyToken = jsonwebtoken.verify(token, process.env.SECRET_KEY);
 
