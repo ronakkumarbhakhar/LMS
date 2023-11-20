@@ -189,7 +189,7 @@ userRoutes.post("/user/login", async (req, res) => {
 
                 // Creating cookie using the generated token
                 res.json( {token,
-                    expiresIn: new Date(Date.now + 86400000),
+                    // expiresIn: toString() new Date(Date.now + 86400000),
                     httpOnly: false
                 });
 
