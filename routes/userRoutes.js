@@ -188,7 +188,7 @@ userRoutes.post("/user/login", async (req, res) => {
                 findUser.tokens = findUser.tokens.concat({ token: token });
 
                 // Creating cookie using the generated token
-                res.cookie("jwtoken", token, {
+                res.json( {token,
                     expiresIn: new Date(Date.now + 86400000),
                     httpOnly: false
                 });
