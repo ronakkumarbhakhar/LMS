@@ -17,7 +17,11 @@ dbConnect()
 //     origin: 'https://655b52620306dc0ab594ab11--exquisite-cajeta-0ab313.netlify.app/',
 //     credentials: true
 // }));
-app.use(cors());
+// app.use(cors());
+const corsConfig = {
+    origin: '*',
+    credentials: true,
+};
 
 app.use(express.json({ limit: '50mb' }));
 
