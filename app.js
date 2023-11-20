@@ -13,11 +13,11 @@ dbConnect()
         console.error("Error connecting to the database:", error);
     });
 
-// app.use(cors({
-//     origin: 'http://localhost:3000',
-//     credentials: true
-// }));
-app.use(cors());
+app.use(cors({
+    origin: 'https://655b52620306dc0ab594ab11--exquisite-cajeta-0ab313.netlify.app/',
+    credentials: true
+}));
+// app.use(cors());
 
 app.use(express.json({ limit: '50mb' }));
 
